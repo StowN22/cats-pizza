@@ -1,0 +1,23 @@
+import { APIRequestContext } from '@playwright/test';
+
+export class CleanUpApi {
+  constructor(
+    private request: APIRequestContext,
+    private apiUrl: string = 'http://localhost:3001/api',
+  ) {
+    this.request = request;
+  }
+
+  async deleteOrdersByEmail(email: string) {
+    await this.request.delete(`${this.apiUrl}/orders/by-email`, {
+      data: { email: email },
+    });
+  }
+
+  async deleteUserByEmail(email: string) {
+    if (!email) return;
+    await this.request.delete(`${this.apiUrl}/users/by-email`, {
+      data: { email: email },
+    });
+  }
+}
