@@ -1,4 +1,4 @@
-import { test } from '../../fixtures/app.fixture';
+import { guestTest as test } from '../../fixtures/app.fixture';
 import { CleanUpApi } from '../api/CleanUpApi';
 import { testUsers } from '../data/testData';
 

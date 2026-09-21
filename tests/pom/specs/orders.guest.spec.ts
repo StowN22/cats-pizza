@@ -1,4 +1,4 @@
-import { autorizedTest as test } from '../../fixtures/app.fixture';
+import { guestTest as test } from '../../fixtures/app.fixture';
 import { CleanUpApi } from '../api/CleanUpApi';
 import { testAddress, testUsers } from '../data/testData';
 
@@ -9,14 +9,11 @@ test.describe('Orders', () => {
     await cleanUpApi.deleteOrdersByEmail(testUsers.existing.email);
   });
 
-  test('Autorized user make order without manual login', async ({
-    homePage,
-    ordersPage,
-    checkoutPage,
-  }) => {
+  test('Make order with login in checkout', async ({ homePage, ordersPage, checkoutPage }) => {
     await homePage.open();
     await homePage.addFirstCatToCart();
     await homePage.goToCheckoutFromCart();
+    await checkoutPage.signInInCheckout(testUsers.existing.email, testUsers.existing.password);
     await checkoutPage.fillAddress(testAddress);
     await checkoutPage.submit();
     await ordersPage.open();
