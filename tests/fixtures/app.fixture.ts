@@ -1,14 +1,14 @@
 import { test as base } from '@playwright/test';
 import { HomePage } from '../pom/pages/HomePage';
 import { AuthModal } from '../pom/pages/AuthModal';
-import { CheckoutPage } from '../pom/pages/CheckOutPage';
+import { CheckoutPage } from '../pom/pages/CheckoutPage';
 import { OrdersPage } from '../pom/pages/Orders Page';
 
 type MyFixtures = {
   homePage: HomePage;
   authPage: AuthModal;
   checkoutPage: CheckoutPage;
-  orderPage: OrdersPage;
+  ordersPage: OrdersPage;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -27,9 +27,9 @@ export const test = base.extend<MyFixtures>({
     await use(checkoutPage);
   },
 
-  orderPage: async ({ page }, use) => {
-    const orderPage = new OrdersPage(page);
-    await use(orderPage);
+  ordersPage: async ({ page }, use) => {
+    const ordersPage = new OrdersPage(page);
+    await use(ordersPage);
   },
 });
 export { expect } from '@playwright/test';
