@@ -39,6 +39,12 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup'],
+      testIgnore: /.*visualTests\/.*\.spec\.ts/,
+    },
+    {
+      name: 'chromium-visual',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: /.*visualTests\/.*\.spec\.ts/,
     },
 
     /* Test against mobile viewports. */
