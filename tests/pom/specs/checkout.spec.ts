@@ -1,6 +1,6 @@
 import { autorizedTest as test } from '../../fixtures/app.fixture';
 
-test('Autorized user sees validateion error for empty required address fields', async ({
+test('Autorized user sees validation error for empty required address fields', async ({
   homePage,
   checkoutPage,
 }) => {
@@ -8,5 +8,5 @@ test('Autorized user sees validateion error for empty required address fields', 
   await homePage.addFirstCatToCart();
   await homePage.goToCheckoutFromCart();
   await checkoutPage.submitWithoutAddress();
-  await checkoutPage.assertValidationError('Пожалуйста, заполните обязательные адреса.');
+  await checkoutPage.assertValidationError('Пожалуйста, заполните обязательные поля адреса.');
 });

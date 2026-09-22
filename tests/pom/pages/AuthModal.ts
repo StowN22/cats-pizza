@@ -5,6 +5,10 @@ export class AuthModal {
     this.page = page;
   }
 
+  private getModalLocator() {
+    return this.page.getByTestId('modal');
+  }
+
   async open() {
     await this.page.getByTestId('signInButton').click();
   }
@@ -16,9 +20,13 @@ export class AuthModal {
     await this.page.getByTestId('signInOrSignUpButton').click();
   }
 
+  async openRegisterButton() {
+    await this.page.getByTestId('registerButton').click();
+  }
+
   async signUp(name: string, email: string, password: string) {
     await this.open();
-    await this.page.getByTestId('registerButton').click();
+    await this.openRegisterButton();
     await this.page.getByLabel('Имя:').fill(name);
     await this.page.getByLabel('Email:').fill(email);
     await this.page.getByLabel('Пароль:', { exact: true }).fill(password);
@@ -32,5 +40,11 @@ export class AuthModal {
 
   async AssertionError(message: string) {
     await expect(this.page.getByText(message)).toBeVisible();
+  }
+  async assertSignInModalHasCorrectView() {
+    await expect(this.getModalLocator()).toHaveScreenshot('signInModal.png');
+  }
+  async assertSignUpModalHasCorrectView() {
+    await expect(this.getModalLocator()).toHaveScreenshot('signUpModal.png');
   }
 }

@@ -1,6 +1,6 @@
 import { test as setup } from '@playwright/test';
 import { authFile } from '../fixtures/app.fixture';
-import { HomePage } from '../pom/pages/homePage';
+import { HomePage } from '../pom/pages/HomePage';
 import { AuthModal } from '../pom/pages/AuthModal';
 import { testUsers } from '../pom/data/testData';
 

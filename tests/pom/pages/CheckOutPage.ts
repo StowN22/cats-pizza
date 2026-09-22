@@ -31,7 +31,7 @@ export class CheckoutPage {
     await this.page.getByTestId('closeSubmittedModalButton').click();
   }
   async submitWithoutAddress() {
-    await this.page.getByTestId('approveOrder').click();
+    await this.page.getByTestId('approveOrderButton').click();
   }
   async assertCheckoutOpened() {
     await expect(this.page.getByTestId('modalTitle')).toHaveText('Оформление доставки');
